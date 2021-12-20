@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -30,13 +31,17 @@ fun Greeting(name: String) {
         color = MaterialTheme.colors.primary,
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
     ) {
-        // 컴포즈 컴포넌트를 열 (Column) 모양으로 배치
-        Column(modifier = Modifier
-            .fillMaxWidth()
-            .padding(24.dp)) {
-            Text(text = "Hello, ")
-            Text(text = name)
+        Row(modifier = Modifier.padding(24.dp)) {
+            // 컴포즈 컴포넌트를 열 (Column) 모양으로 배치
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "Hello, ")
+                Text(text = name)
+            }
+            OutlinedButton(onClick = { /*TODO*/ }) {
+                Text("Show more")
+            }
         }
+
     }
 }
 
