@@ -1,5 +1,6 @@
 package com.haero_kim.composepractice
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.text.font.FontWeight
 
 
 class MainActivity : ComponentActivity() {
@@ -51,11 +53,13 @@ fun Greeting(name: String) {
             Column(
                 modifier = Modifier
                     .weight(1f)
-                        // 패딩이 0 아래로 내려가면 안되기 때문에 최소 0 DP 지정
+                    // 패딩이 0 아래로 내려가면 안되기 때문에 최소 0 DP 지정
                     .padding(bottom = extraPadding.coerceAtLeast(0.dp))
             ) {
                 Text(text = "Hello, ")
-                Text(text = name)
+                Text(text = name, style = MaterialTheme.typography.h4.copy(
+                    fontWeight = FontWeight.ExtraBold
+                ))
             }
             OutlinedButton(onClick = { expanded = !expanded }) {
                 Text(if (expanded) "Show less" else "Show more")
@@ -107,6 +111,12 @@ fun OnboardingScreen(onContinueClicked: () -> Unit) {
     }
 }
 
+@Preview(
+    showBackground = true,
+    widthDp = 320,
+    uiMode = UI_MODE_NIGHT_YES,
+    name = "DefaultPreviewDark"
+)
 @Preview(showBackground = true, widthDp = 320)
 @Composable
 fun DefaultPreview() {
