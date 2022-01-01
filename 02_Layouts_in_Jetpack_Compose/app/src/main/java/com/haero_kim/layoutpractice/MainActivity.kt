@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -27,7 +29,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LayoutPracticeTheme {
-                PhotographerCard()
+                LayoutsCodelab()
             }
         }
     }
@@ -61,26 +63,42 @@ fun PhotographerCard(modifier: Modifier = Modifier) {
             }
         }
     }
+
 }
 
+
 @Composable
-@Preview(showBackground = true)
-fun PhotographerCardPreview() {
-    LayoutPracticeTheme {
-        PhotographerCard()
+fun LayoutsCodelab() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "LayoutsCodelab")
+                },
+                actions = {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(Icons.Filled.Favorite, contentDescription = null)
+                    }
+                }
+            )
+        }
+    ) { innerPadding ->
+        BodyContent(Modifier.padding(innerPadding).padding(8.dp))
     }
 }
 
-
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun BodyContent(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(8.dp)) {
+        Text(text = "Hi, There!")
+        Text(text = "Thanks for going through the Layouts Codelab")
+    }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+@Preview(showBackground = true)
+fun LayoutsCodelabPreview() {
     LayoutPracticeTheme {
-        Greeting("Android")
+        LayoutsCodelab()
     }
 }
